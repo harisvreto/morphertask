@@ -3,7 +3,7 @@ Morpher Increment number task.
 
 ## Technology stack:
 * Client: Vue.js (v2.6.12)
-* API: Node.js - Express (v12.18.3)
+* API: Node.js - Express (v4.17.1)
 * Database: PostgreSQL (v13)
 
 ## System requirements:
