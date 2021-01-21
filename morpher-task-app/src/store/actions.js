@@ -38,7 +38,12 @@ const incrementNumber = async (context) => {
     }
 }
 
+const updateNumber = async (context, number) => {
+    context.commit('LOAD_NUMBER_SUCCESS', number)
+}
+
 export default {
     fetchNumber,
     incrementNumber,
+    updateNumber,
 };

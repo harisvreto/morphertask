@@ -1,7 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
-const socketIo = require('socket.io')
+const WebSocketServer = require('websocket').server
 
 dotenv.config({
   path: '.env'
@@ -11,25 +11,17 @@ const app = express()
 
 const http = require('http').createServer(app)
 
-const io = socketIo(http, {
-  cors: {
-    origin: "http://localhost:8080",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-  serveClient: true
-})
+const wsServer = new WebSocketServer({
+  httpServer: http
+});
+
+module.exports = wsServer;
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // Allow cors
 app.use(cors({ origin: 'http://localhost:8080', credentials: true }))
-
-app.use((req, res, next) => {
-  res.io = io
-  next()
-})
 
 // routes
 const apiRouter = require('./routes')
@@ -49,8 +41,12 @@ app.use((err, req, res) => {
   })
 })
 
-io.on('connect', (socket) => {
-  socket.emit('TEST', 1)
+wsServer.on('request', function(request) {
+  const connection = request.accept(null, request.origin);
+  
+  connection.on('close', function(reasonCode, description) {
+      console.log('Client has disconnected.');
+  });
 })
 
 const port = process.env.PORT || 3000

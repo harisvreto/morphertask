@@ -13,6 +13,35 @@ export default {
   components: {
     Counter
   },
+  methods: {
+    updateNumber(number) {
+      this.$store.dispatch('updateNumber', number)
+    },
+  },
+  data: function() {
+    return {
+      connection: null,
+    }
+  },
+  created: function() {
+    const self = this;
+    this.connection = new WebSocket('ws://localhost:3000')
+
+    this.connection.onmessage = function(event) {
+      if (event) {
+        const data = JSON.parse(event.data);
+        
+        if(data.type === 'NUMBER_UPDATE') {
+          self.updateNumber(data.value)
+        }
+      }
+    }
+
+    this.connection.onopen = function() {
+      console.log("Successfully connected to the echo websocket server...")
+    }
+
+  }
 }
 </script>
 

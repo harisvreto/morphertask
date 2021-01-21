@@ -1,4 +1,5 @@
 const NumberRepository = require('../repositories/NumberRepository')
+const wsServer = require('../index')
 
 const getNumber = async (req, res) => {
     try {
@@ -39,12 +40,10 @@ const incrementNumber = async (req, res) => {
           })
         }
 
-        let io = res.io
-
-        io.emit('message', {
+        wsServer.broadcastUTF(JSON.stringify({
             type: 'NUMBER_UPDATE',
             value: number[1].number,
-        })
+        }))
     
         return res.status(200).json({
             status: 200,
