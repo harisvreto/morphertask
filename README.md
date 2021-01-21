@@ -41,6 +41,7 @@ API_BASE_URL=http://localhost:3000
 docker-compose up
 
 //WAIT TO PROCESS...
+//ENJOY :)
 ```
 
 ## Guide
