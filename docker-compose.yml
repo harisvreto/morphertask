@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  postgresdb:
+    container_name: "postgresdb"
+    build: ./postgresdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresdb/db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=morpher
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  morpher-task-api:
+    container_name: "morpher-task-api"
+    build: ./morpher-task-api
+    ports:
+      - "3000:3000"
+  morpher-task-app:
+    container_name: "morpher-task-app"
+    build: ./morpher-task-app
+    ports:
+      - "8080:80"

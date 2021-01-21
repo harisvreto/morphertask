@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "morpher",
+    "host": "postgresdb",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "morpher",
+    "host": "postgresdb",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "morpher",
+    "host": "postgresdb",
+    "dialect": "postgres"
+  }
+}
