@@ -1,17 +1,33 @@
-h3 {
-    margin: 40px 0 0;
+.error {
+    color: rgb(206, 44, 44);
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-li {
-    display: inline-block;
-    margin: 0 10px;
+.number {
+    font-size: 10em;
+    font-weight: 700;
+    height: 100%;
 }
 
-a {
-    color: #42b983;
+button {
+    border-radius: 5px;
+    border-width: 2px;
+    color: #4c4c4c;
+    font-weight: 700;
+    font-size: 1.125rem;
+    height: 2.875rem;
+    padding: 0 2rem;
+    background-color: #00c386;
+    border-color: transparent;
+    color: #fff;
+}
+
+button:disabled {
+    filter: grayscale(1);
 }

@@ -1,8 +1,8 @@
 <template id="counter">
   <div>
-    <p v-if="busy">Loading...</p>
-    <p v-if="!busy && number !== null">Current Number: {{number}}</p>
-    <p v-if="!busy && errorMessage">Error: {{errorMessage}}</p>
+    <p class="loader" v-show="busy">Loading...</p>
+    <p class="number" v-show="number !== null">{{number}}</p>
+    <p class="error" v-show="!busy && errorMessage">Error: {{errorMessage}}</p>
     <button @click="incrementNumber" :disabled="busy || errorMessage">Increment</button>
   </div>
 </template>

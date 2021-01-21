@@ -30,7 +30,7 @@ const LOAD_NUMBER_ERROR = (state, error) => {
 
 const INCREMENT_NUMBER_PENDING = (state) => {
     const newState = {
-        ...state,
+        ...state.number,
         busy: true,
     };
 
